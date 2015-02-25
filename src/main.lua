@@ -12,7 +12,7 @@ channel.answer()
 ---------------------------
 function sales()
 	channel.say("Dialing sales now.")
-	channel.dial(sales_phone)
+	channel.dial(sales_phone, {timeout='5'})
 end
 
 ---------------------------
