@@ -18,7 +18,7 @@ end
 ---------------------------
 function sales()
 	channel.say("Dialing sales now.")
-	channel.dial(18172964129)
+	channel.dial('8172964129')
 end
 
 ---------------------------
