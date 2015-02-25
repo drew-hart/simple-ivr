@@ -4,6 +4,7 @@ local sales_phone   = '8172964129'
 local support_phone = '2622271450'
 
 channel.answer()
+channel.say("hello.")
 
 ---------------------------
 --
