@@ -14,7 +14,7 @@ channel.answer()
 function sales()
 	time.sleep(1)
 	channel.say("Dialing sales now.")
-	channel.dial(sales_phone)
+	channel.dial(sales_phone, {timeout=5})
 end
 
 ---------------------------
@@ -25,7 +25,7 @@ end
 function support()
 	time.sleep(1)
 	channel.say("Dialing support now.")
-	channel.dial(support_phone)
+	channel.dial(suport_phone, {timeout=5})
 end
 
 ---------------------------
