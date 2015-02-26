@@ -4,27 +4,7 @@ local sales_phone   = '8172964129'
 local support_phone = '2622271450'
 
 channel.answer()
-channel.say("hello")
 
----------------------------
---
--- Logic for Sales group
---
----------------------------
-function sales()
-	channel.say("Dialing sales now.")
-	channel.dial(sales_phone)
-end
-
----------------------------
---
--- Logic for Support group
---
----------------------------
-function support()
-	channel.say("Dialing support now.")
-	channel.dial(support_phone)
-end
 
 ---------------------------
 --
