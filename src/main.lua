@@ -12,8 +12,6 @@ local group_numbers, err = datastore.get_table("Group Numbers", "string")
 if not err then
 	local sales_phone   = group_numbers:get_row_by_key('sales')
 	local support_phone = group_numbers:get_row_by_key('support')
-	print(sales_phone.key)
-	print(sales_phone.data)
 end
 -- End datastore testing
 
