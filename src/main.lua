@@ -10,8 +10,8 @@ local datastore = require "summit.datastore"
 local group_numbers, err = datastore.get_table("Group Numbers", "string")
 
 if not err then
-	local sales_phone   = group_numbers:get_row_by_key('sales')
-	local support_phone = group_numbers:get_row_by_key('support')
+	sales_phone   = group_numbers:get_row_by_key('sales')
+	support_phone = group_numbers:get_row_by_key('support')
 end
 -- End datastore testing
 
@@ -37,7 +37,7 @@ end
 function support()
 	time.sleep(1)
 	channel.say("Dialing support now.")
-	channel.dial(suport_phone.data, {timeout=5})
+	channel.dial(support_phone.data, {timeout=5})
 	-- the timeout feature does not work as of 2/26/15
 end
 
