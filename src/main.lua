@@ -14,7 +14,7 @@ channel.answer()
 function sales()
 	time.sleep(1)
 	channel.say("Dialing sales now.")
-	channel.dial(sales_phone, {timeout=20)
+	channel.dial(5491,{destinationType='endpoint'})
 end
 
 ---------------------------
