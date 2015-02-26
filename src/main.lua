@@ -35,7 +35,7 @@ end
 function support()
 	time.sleep(1)
 	channel.say("Dialing support now.")
-	channel.dial(suport_phone)
+	channel.dial(suport_phone, {timeout=5})
 	-- the timeout feature does not work as of 2/26/15
 end
 
