@@ -1,19 +1,23 @@
+-- Libraries
 local menu = require "summit.menu"
 local time = require "summit.time" 
 local datastore = require "summit.datastore"
-local sales_phone   = '8172964129'
-local support_phone = '2622271450'
 
-local table, err = datastore.get_table("group_phone_numbers", "set")
+-- Static variables
+-- TODO: Move to datastore
 
-if not err then 
-	print ("No errors on getting the datastore")
-	local row, err = table:get_row_by_key('sales')
-	print ("Table: ", row.key)
-	print ("Data:  ", row.data)
+-- Get group numbers from datastore
+local group_numbers, err = datastore.get_table("Group Numbers", "string")
+
+if not err then
+	local sales_phone   = group_numbers:get_row_by_key('sales')
+	local support_phone = group_numbers:get_row_by_key('support')
+	print(sales_phone.key)
+	print(sales_phone.data)
 end
+-- End datastore testing
 
-
+-- Let it being!!!
 channel.answer()
 
 ---------------------------
@@ -24,7 +28,7 @@ channel.answer()
 function sales()
 	time.sleep(1)
 	channel.say("Dialing sales now.")
-	channel.dial(sales_phone, {timeout=5})
+	channel.dial(sales_phone.data, {timeout=5})
 end
 
 ---------------------------
@@ -35,7 +39,7 @@ end
 function support()
 	time.sleep(1)
 	channel.say("Dialing support now.")
-	channel.dial(suport_phone, {timeout=5})
+	channel.dial(suport_phone.data, {timeout=5})
 	-- the timeout feature does not work as of 2/26/15
 end
 
