@@ -1,19 +1,21 @@
+-- Libraries
 local menu = require "summit.menu"
 local time = require "summit.time" 
 local datastore = require "summit.datastore"
-local sales_phone   = '8172964129'
-local support_phone = '2622271450'
 
-local table, err = datastore.get_table("group_phone_numbers", "set")
+-- Static variables
+-- TODO: Move to datastore
 
-if not err then 
-	print ("No errors on getting the datastore")
-	local row, err = table:get_row_by_key('sales')
-	print ("Table: ", row.key)
-	print ("Data:  ", row.data)
+-- Get group numbers from datastore
+local group_numbers, err = datastore.get_table("Group Numbers", "string")
+
+if not err then
+	local sales_phone   = group_numbers:get_row_by_key('sales')
+	local support_phone = group_numbers:get_row_by_key('support')
 end
+-- End datastore testing
 
-
+-- Let it being!!!
 channel.answer()
 
 ---------------------------
