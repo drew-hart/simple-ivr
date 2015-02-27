@@ -113,7 +113,7 @@ function rec_voicemail()
 
 	-- test that the recording
 	my_recording = recording(my_voicemail.id)
-	channel.play(my_recording, {recordingType = "voice"})
+	channel.play(my_recording)
 end
 
 ---------------------------
