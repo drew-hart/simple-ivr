@@ -5,6 +5,7 @@ local time = require "summit.time"
 local datastore = require "summit.datastore"
 local recording = require("summit.recording")
 local sound = require("summit.sound")
+local email = require('summit.email')
 
 -- ===================================================================
 --
@@ -133,28 +134,40 @@ end
 function simple_ivr()
 	if hours.data['end'] == hours.data['start'] then
 		channel.say(closed_message)
-		rec_voicemail()
+		email_voicemail(rec_voicemail())
 	elseif time.format(now, "%H%M") < hours.data['end'] and
 	   	   time.format(now, "%H%M") > hours.data['start'] then
 		my_menu()
 	else
 		channel.say(closed_message)
-		rec_voicemail()
+		email_voicemail(rec_voicemail())
 	end
 end
 
 ---------------------------
 --
--- Logic for recording voicemail
+-- Logic for recording voicemails
 --
 ---------------------------
 function rec_voicemail()
-	channel.say("Please leave a message. When youre finished, press pound or just hang up.")
-	channel.play(sound.tone(1000, 300, 500, 1))
-	my_voicemail = channel.record({finishOnKey='#*', maxLength=60, playBeep="false"})
-	-- test that the recording
-	my_recording = recording(my_voicemail.id)
-	channel.play(my_recording)
+	channel.say("Please leave a message. When youre finished, press pound sign or just hang up.")
+	channel.play(sound.tone(1000, 300, 250, 1))
+	voicemail = channel.record({finishOnKey='#*', maxLength=60, playBeep="false"})
+	return voicemail
+end
+
+---------------------------
+--
+-- Logic for emailing voicemails
+--
+---------------------------
+function email_voicemail(voicemail)
+	local cur_time = time.now('US/Central')
+	email.send("drew@drewhart.com", 
+		"drew.hart@corvisa.com",
+		cur_time,
+		"This is the body of the message. This should be in datastore."
+		)
 end
 
 ---------------------------
