@@ -3,6 +3,8 @@ local inspect = require "inspect" -- Utility for debugging
 local menu = require "summit.menu"
 local time = require "summit.time" 
 local datastore = require "summit.datastore"
+local recording = require("summit.recording")
+local sound = require("summit.sound")
 
 -- Static variables
 -- TODO: Move to datastore
@@ -41,8 +43,6 @@ function get_datastore_data()
 	end
 end
 
--- Let it being!!!
-channel.answer()
 
 ---------------------------
 --
@@ -83,16 +83,39 @@ function my_menu()
 	my_menu.run()
 end
 
+---------------------------
+--
+-- IVR logic
+--
+---------------------------
 function simple_ivr()
 	if hours.data['end'] == hours.data['start'] then
 		channel.say(closed_message)
+		rec_voicemail()
 	elseif time.format(now, "%H%M") < hours.data['end'] and
 	   	   time.format(now, "%H%M") > hours.data['start'] then
 		my_menu()
 	else
 		channel.say(closed_message)
+		rec_voicemail()
 	end
 end
+
+---------------------------
+--
+-- Logic for recording voicemail
+--
+---------------------------
+function rec_voicemail()
+	channel.say("Please leave a message. When youre finished, press pound or just hang up.")
+	channel.play(sound.tone(1000, 300, 500, 1))
+	my_voicemail = channel.record()
+
+	-- test that the recording
+	my_recording = recording(my_voicemail.id)
+	channel.play(my_recording, {recordingType = "voice"})
+end
+
 ---------------------------
 --
 -- Main 
