@@ -83,6 +83,16 @@ function my_menu()
 	my_menu.run()
 end
 
+function simple_ivr()
+	if hours.data['end'] == hours.data['start'] then
+		channel.say(closed_message)
+	elseif time.format(now, "%H%M") < hours.data['end'] and
+	   	   time.format(now, "%H%M") > hours.data['start'] then
+		my_menu()
+	else
+		channel.say(closed_message)
+	end
+end
 ---------------------------
 --
 -- Main 
@@ -90,4 +100,5 @@ end
 ---------------------------
 channel.answer()
 get_datastore_data()
+simple_ivr()
 channel.hangup()
