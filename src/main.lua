@@ -52,7 +52,7 @@ channel.answer()
 function sales()
 	time.sleep(1)
 	channel.say("Dialing sales now.")
-	channel.dial(sales_phone.data, {timeout=5})
+	channel.dial(sales_phone.data, {timeout=20})
 end
 
 ---------------------------
@@ -63,7 +63,7 @@ end
 function support()
 	time.sleep(1)
 	channel.say("Dialing support now.")
-	channel.dial(support_phone.data, {timeout=5})
+	channel.dial(support_phone.data, {timeout=20})
 	-- the timeout feature does not work as of 2/26/15
 end
 
