@@ -109,8 +109,7 @@ end
 function rec_voicemail()
 	channel.say("Please leave a message. When youre finished, press pound or just hang up.")
 	channel.play(sound.tone(1000, 300, 500, 1))
-	my_voicemail = channel.record({finishOnKey='#', maxLength=60, playBeep=false})
-
+	my_voicemail = channel.record({finishOnKey='#*', maxLength=60, playBeep=false})
 	-- test that the recording
 	my_recording = recording(my_voicemail.id)
 	channel.play(my_recording)
