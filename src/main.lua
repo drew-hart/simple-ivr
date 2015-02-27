@@ -7,14 +7,39 @@ local datastore = require "summit.datastore"
 -- Static variables
 -- TODO: Move to datastore
 
--- Get group numbers from datastore
-local group_numbers, err = datastore.get_table("Group Numbers", "string")
+---------------------------
+--
+-- Get Datastore values
+--
+---------------------------
+function get_datastore_data()
+	-- Get group numbers
+	local group_numbers, err = datastore.get_table("Group Numbers", "string")
+	if not err then
+		sales_phone   = group_numbers:get_row_by_key('sales')
+		support_phone = group_numbers:get_row_by_key('support')
+	else
+		print("Error in get_data_store: ", err)
+	end
 
-if not err then
-	sales_phone   = group_numbers:get_row_by_key('sales')
-	support_phone = group_numbers:get_row_by_key('support')
+	-- Get office hours
+	local office_hours, err = datastore.get_table("Office Hours", "map")
+	if not err then
+		now = time.now('US/Central')
+		local today = time.weekday_name(now)
+	 	hours = office_hours:get_row_by_key(today)
+	else
+		print("Error in get_data_store: ", err)
+	end
+
+	-- Get close office message
+	local office_closed, err = datastore.get_table("Office is Closed Message", "string")
+	if not err then
+		closed_message = office_closed:get_row_by_key('message').data
+	else
+		print("Error in get_data_store: ", err)
+	end
 end
--- End datastore testing
 
 -- Let it being!!!
 channel.answer()
@@ -54,4 +79,5 @@ my_menu.add("2", "Press 2 to contact support", support)
 -- TODO: Add an invalid option using my_menu.default function
 my_menu.run()
 
+get_datastore_data()
 channel.hangup()
