@@ -178,12 +178,29 @@ end
 
 ---------------------------
 --
+-- Logic for sms
+--
+---------------------------
+function send_sms()
+	log.debug("SMS function running")
+	local cur_time = time.now('US/Central')
+
+	local to_addr 	= "+18172964129"
+	local from_addr = "+14145221801@corvisa.com"
+	local message 	= cur_time
+
+	ok, err = sms.send(to_addr, from_addr, message)
+	log.debug("Ok: ", ok, "Err: ", err)
+end
+---------------------------
+--
 -- Main 
 --
 ---------------------------
 channel.answer()
 log.debug("Email function running")
 email_voicemail()
+send_sms()
 get_datastore_data()
 simple_ivr()
 channel.hangup()
