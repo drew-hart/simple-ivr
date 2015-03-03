@@ -163,10 +163,10 @@ end
 --
 ---------------------------
 function email_voicemail()
-	log.debug("Email function running")
+	log.debug("-- Email function running --")
 	local cur_time = time.now('US/Central')
 
-	local to_addr 	= "drew@drewhart"
+	local to_addr 	= "drew@drewhart.com"
 	local from_addr = "drew.hart@corvisa.com"
 	local subject 	= cur_time
 	local body 		= "This is the body of the message. This should be in datastore."
@@ -182,11 +182,11 @@ end
 --
 ---------------------------
 function send_sms()
-	log.debug("SMS function running")
+	log.debug("-- SMS function running --")
 	local cur_time = time.now('US/Central')
 
 	local to_addr 	= "+18172964129"
-	local from_addr = "+14145221801@corvisa.com"
+	local from_addr = "+14145221801"
 	local message 	= cur_time
 
 	ok, err = sms.send(to_addr, from_addr, message)
@@ -198,7 +198,6 @@ end
 --
 ---------------------------
 channel.answer()
-log.debug("Email function running")
 email_voicemail()
 send_sms()
 get_datastore_data()
