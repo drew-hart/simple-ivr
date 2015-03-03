@@ -167,7 +167,7 @@ function email_voicemail()
 	local cur_time = time.now('US/Central')
 
 	local to_addr 	= "drew@drewhart.com"
-	local from_addr = nil
+	local from_addr
 	local subject 	= cur_time
 	local body 		= "This is the body of the message. This should be in datastore."
 	local options 	= {}
