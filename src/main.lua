@@ -162,7 +162,7 @@ end
 -- Logic for emailing voicemails
 --
 ---------------------------
-function email_voicemail(voicemail)
+function email_voicemail()
 	log.debug("Email function running")
 	local cur_time = time.now('US/Central')
 
@@ -182,6 +182,8 @@ end
 --
 ---------------------------
 channel.answer()
+log.debug("Email function running")
+email_voicemail()
 get_datastore_data()
 simple_ivr()
 channel.hangup()
