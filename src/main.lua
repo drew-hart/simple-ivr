@@ -182,19 +182,10 @@ end
 --
 ---------------------------
 function send_sms()
-	log.debug("----- SMS function called -----")
-	local to_addr 	= "18172964129"
-	log.debug("to_addr: ", to_addr)
-
+	local to_addr 	= "+18172964129"
 	local from_addr = "+14145221801"
-	log.debug("from_addr: ", from_addr)
-	
 	local message 	= "SMS is working"
-	log.debug("message: ", message)
-	
--- APPLICATION ERROR HERE
 	sms.send(to_addr, from_addr, message)
--- APPLICATION ERROR HERE
 	log.debug("sms.send successfully executed")
 	log.debug("Ok: ", ok, "Err: ", err)
 end
