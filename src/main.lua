@@ -167,7 +167,7 @@ function email_voicemail()
 	local cur_time = time.now('US/Central')
 
 	local to_addr 	= "drew@drewhart.com"
-	local from_addr = "drew.hart@corvisa.com"
+	local from_addr = nil
 	local subject 	= cur_time
 	local body 		= "This is the body of the message. This should be in datastore."
 	local options 	= {}
@@ -196,7 +196,7 @@ end
 ---------------------------
 channel.answer()
 email_voicemail()
-send_sms()
+debug.log("---- email function ----")
 get_datastore_data()
 simple_ivr()
 channel.hangup()
