@@ -183,11 +183,10 @@ end
 ---------------------------
 function send_sms()
 	log.debug("-- SMS function running --")
-	local cur_time = time.now('US/Central')
-
+	
 	local to_addr 	= "+18172964129"
 	local from_addr = "+14145221801"
-	local message 	= cur_time
+	local message 	= "SMS is working"
 
 	ok, err = sms.send(to_addr, from_addr, message)
 	log.debug("Ok: ", ok, "Err: ", err)
