@@ -3,9 +3,10 @@ local inspect = require "inspect" -- Utility for debugging
 local menu = require "summit.menu"
 local time = require "summit.time" 
 local datastore = require "summit.datastore"
-local recording = require("summit.recording")
-local sound = require("summit.sound")
-local email = require('summit.email')
+local recording = require "summit.recording"
+local sound = require "summit.sound"
+local email = require "summit.email"
+local log = require "summit.log"
 
 -- ===================================================================
 --
@@ -162,12 +163,17 @@ end
 --
 ---------------------------
 function email_voicemail(voicemail)
+	log.debug("Email function running")
 	local cur_time = time.now('US/Central')
-	email.send("drew@drewhart.com", 
-		"drew.hart@corvisa.com",
-		cur_time,
-		"This is the body of the message. This should be in datastore."
-		)
+
+	local to_addr 	= "drew@drewhart"
+	local from_addr = "drew.hart@corvisa.com"
+	local subject 	= cur_time
+	local body 		= "This is the body of the message. This should be in datastore."
+	local options 	= {}
+
+
+	email.send(to_addr, from_addr, subject, body, options)
 end
 
 ---------------------------
