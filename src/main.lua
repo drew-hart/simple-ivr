@@ -176,19 +176,6 @@ function email_voicemail()
 	email.send(to_addr, from_addr, subject, body, options)
 end
 
----------------------------
---
--- Logic for sms
---
----------------------------
-function send_sms(to, from, message)
-
-
-
-sms.send(to, from, message)
-
-repl()
-end
 
 ---------------------------
 --
@@ -196,6 +183,11 @@ end
 --
 ---------------------------
 channel.answer()
-send_sms("+1817286429", "+14145338385", "Thanks Team Platform. You're the best!" )
+	local resp, err = sms.send("18172964129", "+14145338385", "Way to Go!")
 
+	if err then
+		channel.say(err)
+	else
+		channel.say("Your SMS Message was succesfully sent")
+	end
 channel.hangup()
