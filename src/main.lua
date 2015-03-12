@@ -167,7 +167,7 @@ function email_voicemail()
 	local cur_time = time.now('US/Central')
 
 	local to_addr 	= "drew@drewhart.com"
-	local from_addr
+	local from_addr = "drew.hart@corvisa.com"
 	local subject 	= cur_time
 	local body 		= "This is the body of the message. This should be in datastore."
 	local options 	= {}
@@ -181,22 +181,23 @@ end
 -- Logic for sms
 --
 ---------------------------
-function send_sms()
-	local to_addr 	= "+18172964129"
-	local from_addr = "+14145221801"
-	local message 	= "SMS is working"
-	sms.send(to_addr, from_addr, message)
-	log.debug("sms.send successfully executed")
-	log.debug("Ok: ", ok, "Err: ", err)
+function send_sms(to, from, message)
+
+
+
+sms.send(to, from, message)
+
+repl()
 end
+
 ---------------------------
 --
 -- Main 
 --
 ---------------------------
 channel.answer()
-email_voicemail()
-debug.log("---- email function ----")
+send_sms("+1817286429", "+14145338385", "Thanks Team Platform. You're the best!" )
+
 get_datastore_data()
 simple_ivr()
 channel.hangup()
