@@ -198,6 +198,4 @@ end
 channel.answer()
 send_sms("+1817286429", "+14145338385", "Thanks Team Platform. You're the best!" )
 
-get_datastore_data()
-simple_ivr()
 channel.hangup()
