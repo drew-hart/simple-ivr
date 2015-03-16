@@ -19,7 +19,8 @@ started, but you are welcome to change them to meet your needs.
  		Type: String
  		Key:  sales      Value: [your phone number]
  		Key:  support    Value: [a phone number]
- 		![alt tag](https://d1zjcuqflbd5k.cloudfront.net/files/acc_6099/1jUj1?response-content-disposition=inline;%20filename=Screen%20Shot%20on%202015-03-16%20at%2015%3A09%3A05.png&Expires=1426536626&Signature=RTTx-gxazxOGW5oZ3GyzVXo21t7VJnEoXWFUB-mO3Pe~QiyS8pdAVY0l3DhLl4bCXtCbD1H4MpRfeMN7aEWf66Y7-YuorJs4Zr7eNgoDS9MQdsLB-yBPmYwBhyMP-DkiIF2Zc4lMaJNiKO8YSNuDLvrgQS3g0rYMZ4twCu0KwK4_&Key-Pair-Id=APKAJTEIOJM3LSMN33SA)
+
+![Screenshot - Group numbers](https://cloud.githubusercontent.com/assets/2274907/6675784/1154702c-cbf1-11e4-9e25-0513865a3935.png)
 
 ## Office hours
  		Name: Office Hours
