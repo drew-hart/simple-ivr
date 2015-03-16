@@ -32,9 +32,12 @@ started, but you are welcome to change them to meet your needs.
  		Key Name: tuesday    Key Values: name = start, value = [HHMM]
 							 Key Values: name = end, value = [HHMM]
 		... repeat this for each day of the week 
- 
+
+![Screenshot - Office hours](https://cloud.githubusercontent.com/assets/2274907/6675876/cd11b0cc-cbf1-11e4-8514-d2806518b0c1.png) 
 
 ## Closed message
  		Name: Office is Closed Message
  		Type: String
  		Key:  message     Value: [the message you want played]
+
+![Screenshot - Closed message](https://cloud.githubusercontent.com/assets/2274907/6675925/2c8578ae-cbf2-11e4-996c-638574c78e16.png)
