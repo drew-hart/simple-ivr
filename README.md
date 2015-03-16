@@ -20,7 +20,7 @@ started, but you are welcome to change them to meet your needs.
  		Key:  sales      Value: [your phone number]
  		Key:  support    Value: [a phone number]
 
-![Screenshot - Group numbers](https://cloud.githubusercontent.com/assets/2274907/6675784/1154702c-cbf1-11e4-9e25-0513865a3935.png)
+![Screenshot - Group numbers](https://cloud.githubusercontent.com/assets/2274907/6675843/8345beac-cbf1-11e4-9d59-7dfda9e0b60a.png)
 
 ## Office hours
  		Name: Office Hours
