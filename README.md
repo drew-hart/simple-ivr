@@ -12,6 +12,8 @@ Application > Datastore. From there select your application on the
 drop down and create tables by clicking on the plus sign. Below are
 a list of tables that are used in this application to get you
 started, but you are welcome to change them to meet your needs.
+
+**Note:** The table names used in the screen shots below match those in `main.lua`. If you want to change then, just be sure they match. 
  
 ## Group numbers
 
