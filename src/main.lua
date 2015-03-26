@@ -1,4 +1,8 @@
--- Libraries
+---------------------------
+--
+-- Imports
+--
+---------------------------
 local inspect = require "inspect" -- Utility for debugging
 local menu = require "summit.menu"
 local time = require "summit.time" 
@@ -54,7 +58,8 @@ end
 function sales()
 	time.sleep(1)
 	channel.say("Dialing sales now.")
-	channel.dial(sales_phone.data, {timeout=20})
+	channel.dial(sales_phone.data, {timeout=5})
+	channel.say("time is working")
 end
 
 ---------------------------
@@ -65,8 +70,8 @@ end
 function support()
 	time.sleep(1)
 	channel.say("Dialing support now.")
-	channel.dial(support_phone.data, {timeout=20})
-	-- the timeout feature does not work as of 2/26/15
+	channel.dial(support_phone.data, {timeout=5})
+	channel.say("time is working")
 end
 
 ---------------------------
