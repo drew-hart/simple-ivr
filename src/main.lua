@@ -57,7 +57,7 @@ end
 function sales()
 	time.sleep(1)
 	channel.say("Dialing sales now.")
-	channel.dial(sales_phone.data, {timeout=20})
+	channel.dial(sales_phone.data, {timeout=30})
 	voicemail = rec_voicemail()
 	if (voicemail and voicemail.duration ~= 1) then
 		email_voicemail(voicemail)
@@ -119,9 +119,9 @@ end
 -- TODO: Wire this up to Datastore
 ---------------------------
 function email_voicemail(recording)
-		local to_addr 	= "drew@drewhart.com"
-		local from_addr = "drew.hart@corvisa.com"
-		local subject 	= time.now('US/Central')
+		local to_addr 	= "drew.hart@corvisa.com"
+		local from_addr = "drew@drewhart.com"
+		local subject 	= "test"
 		local body 		= "This is the body of the message. This should be in datastore."
 		email.send(to_addr, from_addr, subject, body, {files={['recording.mp3']=recording}})
 end
