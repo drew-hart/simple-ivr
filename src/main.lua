@@ -110,13 +110,21 @@ end
 ---------------------------
 --
 -- Logic for recording voicemails
+-- Email voicemail
 --
+-- TODO: Wire this up to Datastore
 ---------------------------
 function rec_voicemail()
 	channel.say("Please leave a message. When youre finished, press pound sign or just hang up.")
 	channel.play(sound.tone(1000, 300, 250, 1))
 	voicemail = channel.record({finishOnKey='#*', maxLength=60, playBeep="false"})
 	return voicemail
+function email_voicemail(recording)
+		local to_addr 	= "drew@drewhart.com"
+		local from_addr = "drew.hart@corvisa.com"
+		local subject 	= time.now('US/Central')
+		local body 		= "This is the body of the message. This should be in datastore."
+		email.send(to_addr, from_addr, subject, body, {files={['recording.mp3']=recording}})
 end
 
 ---------------------------
@@ -124,18 +132,6 @@ end
 -- WIP: Logic for emailing voicemails
 --
 ---------------------------
-function send_email()
-	log.debug("-- Email function running --")
-	local cur_time = time.now('US/Central')
-
-	local to_addr 	= "drew@drewhart.com"
-	local from_addr = "drew.hart@corvisa.com"
-	local subject 	= cur_time
-	local body 		= "This is the body of the message. This should be in datastore."
-	local options 	= {}
-
-
-	email.send(to_addr, from_addr, subject, body, options)
 end
 ---------------------------
 --
