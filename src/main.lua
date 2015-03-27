@@ -58,7 +58,10 @@ function sales()
 	time.sleep(1)
 	channel.say("Dialing sales now.")
 	channel.dial(sales_phone.data, {timeout=20})
-	rec_voicemail()
+	voicemail = rec_voicemail()
+	if (voicemail and voicemail.duration ~= 1) then
+		email_voicemail(voicemail)
+	end
 end
 
 ---------------------------
@@ -70,7 +73,10 @@ function support()
 	time.sleep(1)
 	channel.say("Dialing support now.")
 	channel.dial(support_phone.data, {timeout=20})
-	rec_voicemail()
+	voicemail = rec_voicemail()
+	if (voicemail and voicemail.duration ~= 1) then
+		email_voicemail(voicemail)
+	end
 end
 
 ---------------------------
@@ -93,32 +99,25 @@ end
 --
 -- IVR logic
 --
+-- TODO: use the business hours function
 ---------------------------
 function simple_ivr()
 	if hours.data['end'] == hours.data['start'] then
 		channel.say(closed_message)
-		email_voicemail(rec_voicemail())
-	elseif time.format(now, "%H%M") < hours.data['end'] and -- TODO: use business hours function per Jimmy
+	elseif time.format(now, "%H%M") < hours.data['end'] and 
 	   	   time.format(now, "%H%M") > hours.data['start'] then
 		my_menu()
 	else
 		channel.say(closed_message)
-		email_voicemail(rec_voicemail())
 	end
 end
 
 ---------------------------
 --
--- Logic for recording voicemails
 -- Email voicemail
 --
 -- TODO: Wire this up to Datastore
 ---------------------------
-function rec_voicemail()
-	channel.say("Please leave a message. When youre finished, press pound sign or just hang up.")
-	channel.play(sound.tone(1000, 300, 250, 1))
-	voicemail = channel.record({finishOnKey='#*', maxLength=60, playBeep="false"})
-	return voicemail
 function email_voicemail(recording)
 		local to_addr 	= "drew@drewhart.com"
 		local from_addr = "drew.hart@corvisa.com"
@@ -129,10 +128,17 @@ end
 
 ---------------------------
 --
--- WIP: Logic for emailing voicemails
+-- Voicemail recording function
 --
 ---------------------------
+function rec_voicemail()
+	channel.say("If you would like to leave a message, then please do so after the beep. Otherwise, please hangup.")
+	voicemail = channel.record({finishOnKey='#', maxLength=300, playBeep="true"})
+	if voicemail then
+		return voicemail
+	end
 end
+
 ---------------------------
 --
 -- Main 
