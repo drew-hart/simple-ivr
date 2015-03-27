@@ -10,7 +10,6 @@ local datastore = require "summit.datastore"
 local recording = require "summit.recording"
 local sound = require "summit.sound"
 local email = require "summit.email"
-local sms = require "summit.sms"
 local http = require "summit.http"
 local log = require "summit.log"
 
@@ -58,8 +57,8 @@ end
 function sales()
 	time.sleep(1)
 	channel.say("Dialing sales now.")
-	channel.dial(sales_phone.data, {timeout=5})
-	channel.say("time is working")
+	channel.dial(sales_phone.data, {timeout=20})
+	rec_voicemail()
 end
 
 ---------------------------
@@ -70,8 +69,8 @@ end
 function support()
 	time.sleep(1)
 	channel.say("Dialing support now.")
-	channel.dial(support_phone.data, {timeout=5})
-	channel.say("time is working")
+	channel.dial(support_phone.data, {timeout=20})
+	rec_voicemail()
 end
 
 ---------------------------
