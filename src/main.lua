@@ -16,10 +16,11 @@ local log = require "summit.log"
 
 ---------------------------
 --
--- Get Datastore values
+-- Get Settings from Datastore
 --
 ---------------------------
-function get_datastore_data()
+function get_settings()
+
 	-- Get group numbers
 	local group_numbers, err = datastore.get_table("Group Numbers", "string")
 	if not err then
@@ -145,6 +146,6 @@ end
 --
 ---------------------------
 channel.answer()
-get_datastore_data()
+get_settings()
 simple_ivr()
 channel.hangup()
