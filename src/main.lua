@@ -119,12 +119,18 @@ end
 --
 -- TODO: Wire this up to Datastore
 ---------------------------
-function email_voicemail(recording)
-		local to_addr 	= "drew.hart@corvisa.com"
-		local from_addr = "drew@drewhart.com"
-		local subject 	= "test"
-		local body 		= "This is the body of the message. This should be in datastore."
-		email.send(to_addr, from_addr, subject, body, {files={['recording.mp3']=recording}})
+function email_voicemail(address, recording)
+	local to_addr 	= address
+	local from_addr = "drew.hart@corvisa.com"
+	local subject 	= "Voicemail for " .. sales_settings.data['name']
+	local body 		= "A voicemail message is attached"
+	
+	res, err = email.send(to_addr, from_addr, subject, body, {file={['recording.mp3']=recordings}})
+	if err then
+		print("Error: ", err)
+	else
+		log.info("voicemail sent successfully to ", address, " - ", recording )
+	end
 end
 
 ---------------------------
