@@ -55,13 +55,13 @@ end
 -- Logic for Sales group
 --
 ---------------------------
-function sales()
+function call_sales()
 	time.sleep(1)
 	channel.say("Dialing sales now.")
-	channel.dial(sales_phone.data, {timeout=30})
+	channel.dial(sales_settings.data['phone'], {timeout=20})
 	voicemail = rec_voicemail()
 	if (voicemail and voicemail.duration ~= 1) then
-		email_voicemail(voicemail)
+		email_voicemail(sales_settings.data['email'], voicemail)
 	end
 end
 
@@ -70,13 +70,13 @@ end
 -- Logic for Support group
 --
 ---------------------------
-function support()
+function call_support()
 	time.sleep(1)
 	channel.say("Dialing support now.")
-	channel.dial(support_phone.data, {timeout=20})
+	channel.dial(sales_settings.data['phone'], {timeout=20})
 	voicemail = rec_voicemail()
 	if (voicemail and voicemail.duration ~= 1) then
-		email_voicemail(voicemail)
+		email_voicemail(support_settings.data['email'], voicemail)
 	end
 end
 
@@ -88,8 +88,8 @@ end
 function my_menu()
 	local my_menu = menu.Menu()
 	my_menu.intro("Thanks for calling.")
-	my_menu.add("1", "Press 1 to contact sales", sales)
-	my_menu.add("2", "Press 2 to contact support", support)
+	my_menu.add("1", "Press 1 to contact sales", call_sales)
+	my_menu.add("2", "Press 2 to contact support", call_support)
 	-- TODO: Add an invalid option using my_menu.default function
 	my_menu.timeout(30)
 	my_menu.default(invalid_option)
