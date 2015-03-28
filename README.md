@@ -18,21 +18,31 @@ started, but you are welcome to change them to meet your needs.
 ## Group numbers
 
  		Name: Group Numbers
- 		Type: String
- 		Key:  sales      Value: [your phone number]
- 		Key:  support    Value: [a phone number]
+ 		Type: Map
 
-![Screenshot - Group numbers](https://cloud.githubusercontent.com/assets/2274907/6675843/8345beac-cbf1-11e4-9d59-7dfda9e0b60a.png)
+ 		Key Name:  sales	Key Values: name = [department name]
+ 							Key Values: phone = [forwarding phone number]
+ 							Key Values: email = [email to send voicemails]
+
+ 		Key Name:  support	Key Values: name = [department name]
+ 							Key Values: phone = [forwarding phone number]
+ 							Key Values: email = [email to send voicemails]
+
+![Screenshot - Group numbers](https://cloud.githubusercontent.com/assets/2274907/6879396/01403b88-d4c2-11e4-8a8f-664dacb8fc5f.png)
 
 ## Office hours
  		Name: Office Hours
  		Type: Map
+
  		Key Name: sunday     Key Values: name = start, value = [HHMM]
 							 Key Values: name = end, value = [HHMM]
+ 		
  		Key Name: monday     Key Values: name = start, value = [HHMM]
 							 Key Values: name = end, value = [HHMM]
+ 		
  		Key Name: tuesday    Key Values: name = start, value = [HHMM]
 							 Key Values: name = end, value = [HHMM]
+		
 		... repeat this for each day of the week 
 
 ![Screenshot - Office hours](https://cloud.githubusercontent.com/assets/2274907/6675876/cd11b0cc-cbf1-11e4-8514-d2806518b0c1.png) 
