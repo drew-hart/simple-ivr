@@ -22,12 +22,12 @@ local log = require "summit.log"
 function get_settings()
 
 	-- Get group numbers
-	local group_numbers, err = datastore.get_table("Group Numbers", "string")
-	if not err then
-		sales_phone   = group_numbers:get_row_by_key('sales')
-		support_phone = group_numbers:get_row_by_key('support')
+	local group_numbers, err = datastore.get_table("Group Numbers Map", "map")
+	if err then
+		log.debug("Error in get_data_store: ", err)
 	else
-		print("Error in get_data_store: ", err) --TODO: Log these errors 
+		sales_settings = group_numbers:get_row_by_key('sales')
+		support_settings = group_numbers:get_row_by_key('support')
 	end
 
 	-- Get office hours
