@@ -32,20 +32,20 @@ function get_settings()
 
 	-- Get office hours
 	local office_hours, err = datastore.get_table("Office Hours", "map")
-	if not err then
+	if err then
+		print("Error in get_data_store: ", err)
+	else
 		now = time.now('US/Central')
 		local today = time.weekday_name(now)
 	 	hours = office_hours:get_row_by_key(today)
-	else
-		print("Error in get_data_store: ", err)
 	end
 
 	-- Get close office message
 	local office_closed, err = datastore.get_table("Office is Closed Message", "string")
-	if not err then
-		closed_message = office_closed:get_row_by_key('message').data
-	else
+	if err then
 		print("Error in get_data_store: ", err)
+	else
+		closed_message = office_closed:get_row_by_key('message').data
 	end
 end
 
