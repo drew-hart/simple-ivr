@@ -1,3 +1,6 @@
+# Summary
+This application sets up a simple inbound IVR, or phone system. Once setup, you will be able to establish an outside business phone number. Callers will be presented with options when they call to reach various departments or people in your organization (e.g. press 1 for sales or 2 for support. Callers can leave voicemails and those will be emailed to an address within your organization (e.g. a person or a group email inbox).
+
 # Setting up Datastore
 
 Summit provides you with powerful database tool, where you can
