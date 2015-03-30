@@ -3,16 +3,19 @@
 -- Imports
 --
 ---------------------------
-local inspect = require "inspect" -- Utility for debugging
+
+-- Utilities
+local inspect = require "inspect"
+
+-- Summit imports
+local log = require "summit.log"
 local menu = require "summit.menu"
 local time = require "summit.time" 
-local datastore = require "summit.datastore"
-local recording = require "summit.recording"
+local http = require "summit.http"
 local sound = require "summit.sound"
 local email = require "summit.email"
-local http = require "summit.http"
-local log = require "summit.log"
-
+local datastore = require "summit.datastore"
+local recording = require "summit.recording"
 
 ---------------------------
 --
@@ -48,7 +51,6 @@ function get_settings()
 		closed_message = office_closed:get_row_by_key('message').data
 	end
 end
-
 
 ---------------------------
 --
@@ -117,7 +119,6 @@ end
 --
 -- Email voicemail
 --
--- TODO: Wire this up to Datastore
 ---------------------------
 function email_voicemail(address, recording)
 	local to_addr 	= address
@@ -125,7 +126,7 @@ function email_voicemail(address, recording)
 	local subject 	= "Voicemail for " .. sales_settings.data['name']
 	local body 		= "A voicemail message is attached"
 	
-	res, err = email.send(to_addr, from_addr, subject, body, {file={['recording.mp3']=recordings}})
+	res, err = email.send(to_addr, from_addr, subject, body, {file={['recording.mp3']=recording}})
 	if err then
 		print("Error: ", err)
 	else
