@@ -23,32 +23,31 @@ local recording = require "summit.recording"
 --
 ---------------------------
 function get_settings()
+-- TODO: Move the get_setting function into the main body
 
 	-- Get group numbers
 	local group_numbers, err = datastore.get_table("Group Numbers Map", "map")
 	if err then
 		log.debug("Error in get_data_store: ", err)
-	else
-		sales_settings = group_numbers:get_row_by_key('sales')
-		support_settings = group_numbers:get_row_by_key('support')
 	end
+
+	sales_settings = group_numbers:get_row_by_key('sales')
+	support_settings = group_numbers:get_row_by_key('support')
 
 	-- Get office hours
 	local office_hours, err = datastore.get_table("Office Hours", "map")
 	if err then
 		print("Error in get_data_store: ", err)
-	else
-		now = time.now('US/Central')
-		local today = time.weekday_name(now)
-	 	hours = office_hours:get_row_by_key(today)
 	end
 
-	-- Get close office message
+	now = time.now('US/Central')
+	local today = time.weekday_name(now)
+ 	hours = office_hours:get_row_by_key(today)
+
+	-- Get office is closed message
 	local office_closed, err = datastore.get_table("Office is Closed Message", "string")
 	if err then
 		print("Error in get_data_store: ", err)
-	else
-		closed_message = office_closed:get_row_by_key('message').data
 	end
 end
 
@@ -128,9 +127,9 @@ function email_voicemail(address, recording)
 	
 	res, err = email.send(to_addr, from_addr, subject, body, {file={['recording.mp3']=recording}})
 	if err then
-		print("Error: ", err)
+		log.debug("failed to email voicemail - ", err)
 	else
-		log.info("voicemail sent successfully to ", address, " - ", recording )
+		log.info("voicemail sent successfully to ", address, " - ref: ", recording )
 	end
 end
 
@@ -141,9 +140,13 @@ end
 ---------------------------
 function rec_voicemail()
 	channel.say("If you would like to leave a message, then please do so after the beep. Otherwise, please hangup.")
-	voicemail = channel.record({finishOnKey='#', maxLength=300, playBeep="true"})
-	if voicemail then
-		return voicemail
+
+	recording, err = channel.record({finishOnKey='#', maxLength=300, playBeep="true"})
+	if err then
+		log.debug("failed to record voicemail - ", err)
+	else
+		log.info("voicemail successfully recorded - ref: ", voicemail)
+		return recording
 	end
 end
 
