@@ -51,8 +51,7 @@ function get_settings()
 	end
 
 	-- TODO : see if this works:
-	closed_message = office_closed:get_row_by_key.data.message
---	closed_message = office_closed:get_row_by_key('message').data
+	closed_message = office_closed:get_row_by_key('message').data
 
 end
 
