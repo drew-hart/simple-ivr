@@ -156,10 +156,40 @@ end
 
 ---------------------------
 --
--- Main 
+-- Main
 --
 ---------------------------
 channel.answer()
-get_settings()
+
+-- Get settings: group numbers
+local group_numbers, err = datastore.get_table("Group Numbers Map", "map")
+if err then
+	log.debug("Error in get_data_store: ", err)
+end
+
+sales_settings = group_numbers:get_row_by_key('sales')
+support_settings = group_numbers:get_row_by_key('support')
+
+-- Get settings: office hours
+local office_hours, err = datastore.get_table("Office Hours", "map")
+if err then
+	print("Error in get_data_store: ", err)
+end
+
+now = time.now('US/Central')
+local today = time.weekday_name(now)
+	hours = office_hours:get_row_by_key(today)
+
+-- Get settings: closed message
+local office_closed, err = datastore.get_table("Office is Closed Message", "string")
+if err then
+	print("Error in get_data_store: ", err)
+end
+
+closed_message = office_closed:get_row_by_key('message').data
+
+-- run the IVR
 simple_ivr()
+
+-- end the app
 channel.hangup()
