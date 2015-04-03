@@ -49,6 +49,11 @@ function get_settings()
 	if err then
 		print("Error in get_data_store: ", err)
 	end
+
+	-- TODO : see if this works:
+	closed_message = office_closed:get_row_by_key.data.message
+--	closed_message = office_closed:get_row_by_key('message').data
+
 end
 
 ---------------------------
