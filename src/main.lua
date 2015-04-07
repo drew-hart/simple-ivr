@@ -91,7 +91,7 @@ function email_voicemail(address, recording)
 	local subject 	= "Voicemail for " .. sales_settings.data['name']
 	local body 		= "A voicemail message is attached"
 	
-	res, err = email.send(to_addr, from_addr, subject, body, {file={['recording.mp3']=recording}})
+	res, err = email.send(to_addr, from_addr, subject, body, {files={['recording.mp3']=recording}})
 	if err then
 		log.debug("failed to email voicemail - ", err)
 	else
