@@ -19,7 +19,7 @@ local recording = require "summit.recording"
 
 ---------------------------
 --
--- Logic for Sales group
+-- Logic for Sales dept
 --
 ---------------------------
 function call_sales()
@@ -34,7 +34,7 @@ end
 
 ---------------------------
 --
--- Logic for Support group
+-- Logic for Support dept
 --
 ---------------------------
 function call_support()
@@ -123,14 +123,14 @@ end
 ---------------------------
 channel.answer()
 
--- Get settings: group numbers
-local group_numbers, err = datastore.get_table("Group Numbers", "map")
+-- Get settings: Department Information
+local dept_info, err = datastore.get_table("Department Information", "map")
 if err then
 	log.debug("Error in get_data_store: ", err)
 end
 
-sales_settings = group_numbers:get_row_by_key('sales')
-support_settings = group_numbers:get_row_by_key('support')
+sales_settings = dept_info:get_row_by_key('sales')
+support_settings = dept_info:get_row_by_key('support')
 
 -- Get settings: office hours
 local office_hours, err = datastore.get_table("Office Hours", "map")
