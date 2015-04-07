@@ -74,7 +74,7 @@ function simple_ivr()
 		channel.say(closed_message)
 	elseif time.format(now, "%H%M") < hours.data['end'] and 
 	   	   time.format(now, "%H%M") > hours.data['start'] then
-		my_menu()
+			my_menu()
 	else
 		channel.say(closed_message)
 	end
@@ -124,7 +124,7 @@ end
 channel.answer()
 
 -- Get settings: group numbers
-local group_numbers, err = datastore.get_table("Group Numbers", "map")
+local group_numbers, err = datastore.get_table("Group Numbers Map", "map")
 if err then
 	log.debug("Error in get_data_store: ", err)
 end
@@ -140,7 +140,7 @@ end
 
 now = time.now('US/Central')
 local today = time.weekday_name(now)
-	hours = office_hours:get_row_by_key(today)
+hours = office_hours:get_row_by_key(today)
 
 -- Get settings: closed message
 local office_closed, err = datastore.get_table("Office is Closed Message", "string")
