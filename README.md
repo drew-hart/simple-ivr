@@ -6,24 +6,17 @@ Before you get started, you'll need to create a [developer account](http://devel
 
 ## Setting up Datastore
 
-Summit provides you with powerful database tool, where you can
-store data. You can access datastore through the Summit Dashboard. 
-To create a Summit account visit [developer website](http://developers.corvisa.com)
+Summit provides you with powerful database tool, where you can store data. You can access datastore through the Summit Dashboard. To create a Summit account visit [developer website](http://developers.corvisa.com)
 
 
 ### Setting up your tables
-Several tables are required for this application to function. You
-create tables by logging into the dashboard and clicking on 
-Application > Datastore. From there select your application on the 
-drop down and create tables by clicking on the plus sign. Below are
-a list of tables that are used in this application to get you
-started, but you are welcome to change them to meet your needs.
+Several tables are required for this application to function. You create tables by logging into the dashboard and clicking on Application > Datastore. From there select your application on the drop down and create tables by clicking on the plus sign. Below are a list of tables that are used in this application to get you started, but you are welcome to change them to meet your needs.
 
-**Note:** The table names used in the screen shots below match those in `main.lua`. If you want to change then, just be sure they match. 
+### **Note:** The table names used in the screen shots below match those in `main.lua`. If you want to change then, just be sure they match. 
  
-### Group numbers
+### Department Information
 
- 		Name: Group Numbers
+ 		Name: Department Information
  		Type: Map
 
  		Key Name:  sales	Key Values: name = [department name]
@@ -34,7 +27,7 @@ started, but you are welcome to change them to meet your needs.
  							Key Values: phone = [forwarding phone number]
  							Key Values: email = [email to send voicemails]
 
-![Screenshot - Group numbers](https://cloud.githubusercontent.com/assets/2274907/6879396/01403b88-d4c2-11e4-8a8f-664dacb8fc5f.png)
+![Screenshot - Department Information](https://cloud.githubusercontent.com/assets/2274907/7027352/9d94896c-dd14-11e4-8ce0-e0690cf8b908.png)
 
 ### Office hours
  		Name: Office Hours
@@ -51,14 +44,14 @@ started, but you are welcome to change them to meet your needs.
 		
 		... repeat this for each day of the week 
 
-![Screenshot - Office hours](https://cloud.githubusercontent.com/assets/2274907/6675876/cd11b0cc-cbf1-11e4-8514-d2806518b0c1.png) 
+![Screenshot - Office hours](https://cloud.githubusercontent.com/assets/2274907/7027355/a673db3c-dd14-11e4-9f01-a2ce8baa04ec.png) 
 
 ### Closed message
  		Name: Office is Closed Message
  		Type: String
  		Key:  message     Value: [the message you want played]
 
-![Screenshot - Closed message](https://cloud.githubusercontent.com/assets/2274907/6675925/2c8578ae-cbf2-11e4-996c-638574c78e16.png)
+![Screenshot - Closed message](https://cloud.githubusercontent.com/assets/2274907/7027364/ac3ea02e-dd14-11e4-9aa5-0aaa781c6a51.png)
 
 ## License
 This project is licensed under the terms of the [MIT license](http://opensource.org/licenses/MIT)
