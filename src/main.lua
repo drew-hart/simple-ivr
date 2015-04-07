@@ -124,7 +124,7 @@ end
 channel.answer()
 
 -- Get settings: group numbers
-local group_numbers, err = datastore.get_table("Group Numbers Map", "map")
+local group_numbers, err = datastore.get_table("Group Numbers", "map")
 if err then
 	log.debug("Error in get_data_store: ", err)
 end
