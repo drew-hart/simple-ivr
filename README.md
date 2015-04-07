@@ -60,9 +60,10 @@ started, but you are welcome to change them to meet your needs.
 ## License
 This project is licensed under the terms of the [MIT license](http://opensource.org/licenses/MIT)
 
-## TODO
+## Todo
 * add voicemail feature during closed hours
 * add optional SMS notification for voicemails
 * allow wav or mp3 files for greetings
 * add blocked callers feature - custom message and no voicemail
 * add priority callers feature - alwasy open
+* add unit tests
